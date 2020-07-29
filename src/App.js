@@ -13,13 +13,22 @@ import Home from "./Pages/homePage"
 
 import{Route,Switch} from 'react-router-dom'
 
+import Navbar from "./components/Navbar"
+import Sidebar from "./components/Sidebar"
+import SideAchieved from "./components/SideAchieved"
+import Footer from "./components/Footer"
+
 class App extends Component{
   render(){
     return (
       <>
-      <Switch>
+      <Navbar />
+      <Sidebar /> 
+      <SideAchieved />
+      <Switch> 
         <Route path="/" exact component={Home}/>
         <Route path="/about" exact component={About}/>
+        Route path="/home" exact component={Home}/>
         <Route path="/contact" exact component={Contact}/>
         <Route path="/achieved" exact component={Achieved}/>
         <Route path="/drinkWater" exact component={drinkWater}/>
@@ -28,6 +37,7 @@ class App extends Component{
         <Route path="/todo/:id" exact component={singletodo}/>
         <Route component={Default}/>
       </Switch>
+      <Footer />
 
       </>
   );

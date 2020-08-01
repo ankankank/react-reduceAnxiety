@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {linkData} from './linkData';
 
 const ProductContext = React.createContext();
 
@@ -6,22 +7,24 @@ class ProductProvider extends Component{
     state={
         sidebarOpen:false,
         achievebarOpen:false,
-        achieveITEMS: 0
+        achieveITEMS: 0,
+        links:linkData,
+        achieved:[]
     };
     handleSidebar = () => {
         this.setState({sidebarOpen:!this.state.sidebarOpen});
     };
 
     handleAchievebar = () => {
-        this.setState({AchievebarOpen:!this.state.AchievebarOpen});
+        this.setState({achievebarOpen:!this.state.achievebarOpen});
     };
 
     closeAchievebar = () => {
-        this.setState({AchievebarOpen: false});
+        this.setState({achievebarOpen: false});
     };
 
     openAchievebar = () => {
-        this.setState({AchievebarOpen: true});
+        this.setState({achievebarOpen: true});
     };  
 
 

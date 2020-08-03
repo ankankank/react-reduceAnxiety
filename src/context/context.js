@@ -1,5 +1,7 @@
 import React,{Component} from 'react'
 import {linkData} from './linkData';
+import {socialData} from './socialData';
+
 
 const ProductContext = React.createContext();
 
@@ -9,6 +11,7 @@ class ProductProvider extends Component{
         achievebarOpen:false,
         achieveITEMS: 0,
         links:linkData,
+        socialIcons: socialData,
         achieved:[]
     };
     handleSidebar = () => {

@@ -41,7 +41,7 @@ top:75px;
 left: 0;
 width: 100%;
 height: 100%;
-background: var(--mainGrey);
+background: var(--mainWhite);
 z-index: 1;
 border-right:4px solid var(--primaryColor);
 transition: var(--mainTransition);
@@ -56,7 +56,7 @@ ul{
     text-transform: capitalize;
     color:var(--mainBlack);
     padding: 0.5rem 1.5rem;
-    background: var(--mainWhite);
+    background: transparent;
     transition: var(--mainTransition);
 }
 .sidebar-link:hover{
@@ -68,6 +68,6 @@ ul{
 
 
 @media (min-width:576px){
-    width: 20rem;
+    width: 18rem;
 }
 `;

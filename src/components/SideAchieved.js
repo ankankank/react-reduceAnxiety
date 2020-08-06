@@ -1,16 +1,31 @@
 import React from 'react';
 import {ProductConsumer} from '../context';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 export default function SideAchieved(){
     return(
         <ProductConsumer> 
             {value => {
-                const {achievebarOpen,closeAchievebar,achieved} = value;
+                const {achievebarOpen,closeAchievebar,achieved,achievedITEMS} = value;
                 return (
                     <CartWrapper show={achievebarOpen} onClick={closeAchievebar}>
-                <p> cart items</p>
-                
+                    <ul>
+                    {achieved.map(item =>{
+                        return (<li key={item.id} className="achieved-item mb-4">
+                        <img width="35" src={item.image} alt="todo" />
+                        <div className="mt=3">
+                        <h6 className="text-uppercase"> {item.title} </h6>
+                        </div>
+                         </li>
+                        );
+                    } )}
+
+                    </ul>  
+                    <h6 className="text-title text-capitalize">
+                    Youve done {achievedITEMS} things!Woohoo!
+                    </h6>
+
                     </CartWrapper>
                 );
             }}

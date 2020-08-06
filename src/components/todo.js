@@ -18,8 +18,8 @@ export default function Todo({pro}) {
                   style={{height:"315px" }} />
                   <div className="product-icon">
                   <Link to={`/todo/${pro.id}`} onClick={()=>setSingleTodo(pro.id)}>
-                     <FaSearch className="icon" />
-                  </Link>
+                  <FaSearch className="icon" />
+                  </Link>                  
                   <FaPlusSquare className="icon" onClick={() => addToAchieved(pro.id)} />
                   </div>
                   </div>
@@ -67,12 +67,11 @@ const ItemWrapper = styled.div `
     position:asolute;
     top:50%;
     left:50%;
-    transform:translate(-50%,-50%);
     opacity:0;
 }
 
 .icon{
-    font-size:2.5rem;
+    font-size:2rem;
     margin:1rem;
     padding:0.5rem;
     color: var(--primaryColor);
@@ -80,7 +79,7 @@ const ItemWrapper = styled.div `
     border-radius:0.5rem;
 }
 
-.card:hoer .product-icon{
+.card:hover .product-icon{
     opacity:1;
 }
 

@@ -19,7 +19,7 @@ class ProductProvider extends Component{
         generalTODO:[],
         filteredProducts:[],
         singleTODO:{},
-        loading:false
+        loading:true
     };
 
     componentDidMount(){
@@ -44,25 +44,65 @@ class ProductProvider extends Component{
     });
 };
     getStorageAchieved = () =>{
-        return [];
+        let achieved;
+        if(localStorage.getItem('achieved')){
+            achieved= JSON.parse(localStorage.getItem('achieved'))
+        }
+        else {
+            achieved = []
+        }
+        return achieved;
     };
 
     getStorageTodo = () =>{
-        return [];
+        return localStorage.getItem('singleTODO') ? JSON.parse(localStorage.getItem('singleTODO')) : {};
     };
 
-    getTotals = () =>{ };
+    getTotals = () =>{ 
+        let achieveITEMS = 0;
+        this.state.achieved.forEach(item => {
+            achieveITEMS ++;
+        });
+        return{achieveITEMS};
+    };
 
     syncStorage = () => {
-
+        localStorage.setItem('achieved',JSON.stringify(this.state.achieved));
     };
 
-    addToAchieved = (id) =>{
-        console.log(`add here ${id} `);
+
+    addTotals = () => {
+    const totals = this.getTotals();
+    this.setState({
+      achieveITEMS: totals.achieveITEMS
+    });
+  };
+
+
+
+    addToAchieved = id =>{
+        let tempAchieved = [...this.state.achieved];
+        let tempTodo = [...this.state.generalTODO];
+        let tempItem=tempTodo.find(item => item.id === id);
+        let achieveITEM = {...tempItem};
+        tempAchieved = [...tempAchieved,achieveITEM];
+        this.setState(() => {
+            return {achieved:tempAchieved};
+        },()=>{
+            this.addTotals();
+            this.syncStorage();            
+            this.openAchievebar();
+        });     
     };
 
     setSingleTodo = (id) => {
-        console.log(`set single ${id} `);
+        let todo = this.state.generalTODO.find(item => item.id === id);
+        localStorage.setItem('singleTODO',JSON.stringify(todo))
+        this.setState({
+            singleTODO:{...todo},
+            loading: false
+        })
+
     };
 
     handleSidebar = () => {

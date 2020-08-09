@@ -15,7 +15,7 @@ export default function Todo({pro}) {
                 <div className="card">
                   <div className="img-container">
                   <img src={pro.image} className="card-img-top p-5" alt="todo"
-                  style={{height:"315px" }} />
+                  style={{height:"300px" }} />
                   <div className="product-icon">
                   <Link to={`/todo/${pro.id}`} onClick={()=>setSingleTodo(pro.id)}>
                   <FaSearch className="icon" />
@@ -72,7 +72,7 @@ const ItemWrapper = styled.div `
 
 .icon{
     font-size:2rem;
-    margin:1rem;
+    margin:0.5rem;
     padding:0.5rem;
     color: var(--primaryColor);
     background:var(--mainBlack);

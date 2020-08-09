@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,500&family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,500&family=Open+Sans:wght@300&family=Amatic+SC:wght@700&display=swap");
 
 :root {
-  --primaryColor: #5fb7ea;
+  --primaryColor: #9f63c2;
   --primaryRGBA: rgba(0, 0, 0, 0.3);
   --maiGrey: #fafafa;
   --darkGrey: #5f5e5e;
@@ -16,6 +16,12 @@
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
+}
+
+.text-l {
+  font-family: "Amatic SC", cursive !important;
+  colour: var(--mainBlack);
+  letter-spacing: var(--mainSpacing);
 }
 
 .text-main {

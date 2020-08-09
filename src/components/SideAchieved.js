@@ -7,13 +7,13 @@ export default function SideAchieved(){
     return(
         <ProductConsumer> 
             {value => {
-                const {achievebarOpen,closeAchievebar,achieved,achievedITEMS} = value;
+                const {achievebarOpen,closeAchievebar,achieved,achieveITEMS} = value;
                 return (
                     <CartWrapper show={achievebarOpen} onClick={closeAchievebar}>
                     <ul>
                     {achieved.map(item =>{
                         return (<li key={item.id} className="achieved-item mb-4">
-                        <img width="35" src={item.image} alt="todo" />
+                        <img width="35" src={`../${item.image}`} alt="todo" />
                         <div className="mt=3">
                         <h6 className="text-uppercase"> {item.title} </h6>
                         </div>
@@ -22,10 +22,14 @@ export default function SideAchieved(){
                     } )}
 
                     </ul>  
-                    <h6 className="text-title text-capitalize">
-                    Youve done {achievedITEMS} things!Woohoo!
-                    </h6>
-
+                    <h4 className="text-main text-capitalize">
+                    Youve done {achieveITEMS} things!Woohoo!
+                    </h4>
+                    <div className="text-center my-5">
+                    <Link to="/achieved" className="main-link">
+                    Achievements page
+                    </Link>
+                    </div>
                     </CartWrapper>
                 );
             }}
@@ -46,6 +50,15 @@ border-left: 4px solid var(--primaryColor);
 transition: var(--mainTransition);
 @media (min-width:576px){
     width:20rem;
+}
+
+overflow:scroll;
+padding:2rem;
+ul{
+    padding: 0 !important;
+}
+.achieved-item{
+    list-style-type: none;
 }
 
 

@@ -19,7 +19,9 @@ class ProductProvider extends Component{
         generalTODO:[],
         filteredProducts:[],
         singleTODO:{},
-        loading:true
+        loading:true,
+        search:'',
+        intensity:"all"
     };
 
     componentDidMount(){
@@ -34,6 +36,8 @@ class ProductProvider extends Component{
             const pro = {id,...it.fields,image };
             return pro;
         });
+
+
 
     this.setState({
         generalTODO,
@@ -121,6 +125,58 @@ class ProductProvider extends Component{
         this.setState({achievebarOpen: true});
     };  
 
+    removeItem = (id) =>{
+        let tem = [...this.state.achieved];
+        tem = tem.filter(item =>item.id !==id);
+        this.setState(
+            {
+                achieved: [...tem]
+            },
+            () => {
+                this.addTotals();
+                this.syncStorage();
+            }
+        );
+    };
+
+    clearAB = () =>{
+        this.setState({
+            achieved: []
+        },
+        () => {
+                this.addTotals();
+                this.syncStorage();
+        }
+        );
+    };
+
+    handleChange = (event) =>{
+        const name = event.target.name;
+        this.setState(this.sortData);
+    };
+
+    sortData = () =>{
+        const {generalTODO,intensity,search} = this.state;
+        let y=[...generalTODO];
+        if (intensity !== "all"){
+            y=y.filter(item => item.company === intensity);
+        }
+        if(search.length>0){
+            y = y.filter(item => {
+                let s=search.toLowerCase();
+                let t=item.title.toLowerCase().slice(0,search.length);
+                if(s === t){
+                    return item;
+                }
+            })
+        }
+        this.setState({filteredProducts: y});
+
+    };
+
+    
+
+
 
 
     render(){
@@ -132,7 +188,10 @@ class ProductProvider extends Component{
             closeAchievebar: this.closeAchievebar,
             openAchievebar:this.openAchievebar,
             addToAchieved:this.addToAchieved,
-            setSingleTodo:this.setSingleTodo
+            setSingleTodo:this.setSingleTodo,
+            removeItem:this.removeItem,
+            clearAB:this.clearAB,
+            handleChange:this.handleChange
             }}>
         {  this.props.children }
         </ProductContext.Provider>

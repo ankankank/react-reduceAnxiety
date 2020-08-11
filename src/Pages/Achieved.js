@@ -1,9 +1,10 @@
 import React from 'react'
+import ABP from '../components/ABP';
 
 export default function AchievedPage(){
     return(
         <>
-        <h1>Hello from achieved page</h1>
+        <ABP />
         </>
     )
 }
